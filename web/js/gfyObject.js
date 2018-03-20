@@ -216,14 +216,6 @@ var gfyObject = function (gfyElem, classname) {
 
     function setVideoSources() {
       if (vid && !isVideoSourcesSet) {
-        if (opt.hd) {
-          var source2 = document.createElement('source');
-          source2.src = gfyItem.webmUrl;
-          source2.type = 'video/webm';
-          source2.className = "webmsource";
-          vid.appendChild(source2);
-        }
-
         var source = document.createElement('source');
         if (opt.hd)  {
           source.src = gfyItem.mp4Url;
@@ -233,6 +225,15 @@ var gfyObject = function (gfyElem, classname) {
         source.type = 'video/mp4';
         source.className = "mp4source";
         vid.appendChild(source);
+
+        if (opt.hd) {
+          var source2 = document.createElement('source');
+          source2.src = gfyItem.webmUrl;
+          source2.type = 'video/webm';
+          source2.className = "webmsource";
+          vid.appendChild(source2);
+        }
+
         isVideoSourcesSet = true;
       }
     }
