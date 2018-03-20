@@ -364,7 +364,7 @@ var gfyObject = function (gfyElem, classname) {
           gfyRootElem.style.position = "relative";
           gfyRootElem.style.padding = 0;
           gfyRootElem.style.fontSize = 0;
-          sendAnalytics(gfyId);
+          // sendAnalytics(gfyId);
 
           // call gfycat API to get info for this gfycat
           loadJSONP("https://gfycat.com/cajax/get/" + gfyId, function (data) {
