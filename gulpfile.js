@@ -25,7 +25,8 @@ var chalk = require('chalk'),
     Server = require('karma').Server;
     stylish = require('jshint-stylish'),
     uglify = require('gulp-uglify'),
-    gulpGlobs = require('./gulpGlobs');
+    gulpGlobs = require('./gulpGlobs'),
+    gap = require('gulp-append-prepend');
 
 
 var argv = minimist(process.argv.slice(2));
@@ -49,6 +50,8 @@ gulp.task('lint', function() {
 gulp.task('compress', function () {
   gulp.src(gulpGlobs.js)
     .pipe(concat('dev.gfycat.js'))
+    .pipe(gap.prependText('exports.default = function() {'))
+    .pipe(gap.appendText('};'))
     .pipe(gulp.dest('dist'))
     .pipe(rename('gfycat.js'))
     .pipe(uglify({preserveComments: 'license'}))

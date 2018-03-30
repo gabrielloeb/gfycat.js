@@ -1,3 +1,4 @@
+exports.default = function() {
 /**
  * Copyright 2014-2016 Gfycat, Inc. All Rights Reserved.
  *
@@ -191,7 +192,7 @@ var GfyAnalytics = function() {
     sendViewCount: sendViewCount,
     initGA: initGA
   };
-}();
+};
 
 /**
  * Copyright 2014-2016 Gfycat, Inc. All Rights Reserved.
@@ -1003,7 +1004,7 @@ var gfyObject = function (gfyElem, classname) {
             device_type: isMobile ? 'mobile' : 'desktop'
         };
 
-        GfyAnalytics.sendViewCount(gfyId, data);
+        if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.sendViewCount(gfyId, data);
     }
 
     return {
@@ -1148,3 +1149,5 @@ if (document.addEventListener) {
 } else {
   document.attachEvent("onreadystatechange", gfyCollection.init);
 }
+
+};

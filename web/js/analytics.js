@@ -191,4 +191,4 @@ var GfyAnalytics = function() {
     sendViewCount: sendViewCount,
     initGA: initGA
   };
-}();
+};
