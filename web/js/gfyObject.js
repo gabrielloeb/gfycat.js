@@ -808,7 +808,7 @@ var gfyObject = function (gfyElem, classname) {
             device_type: isMobile ? 'mobile' : 'desktop'
         };
 
-        if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.sendViewCount(gfyId, data);
+        // if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.sendViewCount(gfyId, data);
     }
 
     return {

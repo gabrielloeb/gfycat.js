@@ -1004,7 +1004,7 @@ var gfyObject = function (gfyElem, classname) {
             device_type: isMobile ? 'mobile' : 'desktop'
         };
 
-        if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.sendViewCount(gfyId, data);
+        // if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.sendViewCount(gfyId, data);
     }
 
     return {
@@ -1067,7 +1067,7 @@ var gfyCollection = function() {
     }
 
     function init(classname) {
-        if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.initGA();
+        // if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.initGA();
         classname = typeof classname==="string" ? classname : gfyClass;
         scan(classname);
         attachEventListeners();

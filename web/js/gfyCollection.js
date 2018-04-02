@@ -49,7 +49,7 @@ var gfyCollection = function() {
     }
 
     function init(classname) {
-        if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.initGA();
+        // if (typeof GfyAnalytics !== 'undefined') GfyAnalytics.initGA();
         classname = typeof classname==="string" ? classname : gfyClass;
         scan(classname);
         attachEventListeners();

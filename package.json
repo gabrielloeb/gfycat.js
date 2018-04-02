@@ -2,7 +2,7 @@
   "name": "gfycat-js-embed",
   "version": "1.0.0",
   "description": "Gfycat js embed",
-  "main": "index.js",
+  "main": "dist/gfycat.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
