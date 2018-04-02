@@ -50,7 +50,7 @@ gulp.task('lint', function() {
 gulp.task('compress', function () {
   gulp.src(gulpGlobs.js)
     .pipe(concat('dev.gfycat.js'))
-    .pipe(gap.prependText('exports.default = function() {'))
+    .pipe(gap.prependText('module.exports = function() {'))
     .pipe(gap.appendText('};'))
     .pipe(gulp.dest('dist'))
     .pipe(rename('gfycat.js'))

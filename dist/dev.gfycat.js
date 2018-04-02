@@ -1,4 +1,4 @@
-exports.default = function() {
+module.exports = function() {
 /**
  * Copyright 2014-2016 Gfycat, Inc. All Rights Reserved.
  *
@@ -1031,7 +1031,6 @@ var gfyObject = function (gfyElem, classname) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 
 /**
  * gfyCollection:

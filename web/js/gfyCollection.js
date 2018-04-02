@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 /**
  * gfyCollection:
  * Global object to be called on page load.
