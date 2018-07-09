@@ -186,6 +186,7 @@ var gfyObject = function (gfyElem, classname) {
         vid.controls = false;
         vid.setAttribute('playsinline', '');
         vid.setAttribute('muted', '');
+        // vid.defaultMuted= true;
         vid.muted = true;
         vid.style.width = '100%';
         if (opt.responsive) {
