@@ -565,14 +565,12 @@ var gfyObject = function (gfyElem, classname) {
           // sendAnalytics(gfyId);
 
           // call gfycat API to get info for this gfycat
-          loadJSONP("https://api.gfycat.com/v1/gfycats/" + gfyId, function (data) {
-            if (data) {
-              gfyItem = data.gfyItem;
-              createGfyContent();
-              resolve();
-            } else {
-              reject();
-            }
+          getJSON("https://api.gfycat.com/v1/gfycats/" + gfyId, function (data) {
+            gfyItem = data.gfyItem;
+            createGfyContent();
+            resolve();
+          }, function (err) {
+             reject();
           });
         } else {
           gfyRootElem.innerHTML = "";
@@ -726,32 +724,32 @@ var gfyObject = function (gfyElem, classname) {
       }
     }
 
-    // used to load ajax info for each gfycat on the page
-    // callback functions must be setup and uniquely named for each
-    function loadJSONP(url, callback, context) {
-        var unique = Math.floor((Math.random()*10000000) + 1);
-        // INIT
-        var name = "_" + gfyId + "_" + unique++;
-        if (url.match(/\?/)) url += "&callback=" + name;
-        else url += "?callback=" + name;
-
-        // Create script
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = url;
-
-        // Setup handler
-        window[name] = function (data) {
-            callback.call((context || window), data);
-            document.getElementsByTagName('head')[0].removeChild(script);
-            script = null;
-            try {
-                delete window[name];
-            } catch (e) {}
-        };
-
-        // Load JSON
-        document.getElementsByTagName('head')[0].appendChild(script);
+    /* global ActiveXObject: true */
+    // https://mathiasbynens.be/notes/xhr-responsetype-json
+    function getJSON(url, successHandler, errorHandler) {
+    	var xhr =
+    		typeof XMLHttpRequest !== "undefined" ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    	xhr.open("get", url, true);
+    	xhr.onreadystatechange = function() {
+    		var status;
+    		var data;
+    		// https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
+    		if (xhr.readyState === 4) {
+    			// `DONE`
+    			status = xhr.status;
+    			if (status === 200) {
+    				data = JSON.parse(xhr.responseText);
+    				if (successHandler) {
+    					successHandler(data);
+    				}
+    			} else {
+    				if (errorHandler) {
+    					errorHandler(status);
+    				}
+    			}
+    		}
+    	};
+    	xhr.send();
     }
 
     function checkScrollVideo() {
